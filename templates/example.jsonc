@@ -1,0 +1,18 @@
+{
+    "name": "myName",
+    "domain": "U4ERP", // the man domain that is the master of the data in this source
+    "target": "myTarget",
+    "connection": "myConnection", //used if no connection is specified in the source
+    "dimensions": {
+        //
+        "firstSourceOfDims": {
+            "source": "agldimension",
+            "source_id": "MAIN", //used in combination with domain to create a unique source id to evaluate timestamps for what data to transfer
+            "id": "[client] + \"_\" + [attribute_id] + \"_\" + [attribute_name]", //the unique ID that will be used for using the data, naming tables and columns and setting up the relations between them
+            "description": "[description]", // Human readable description of the dimension
+            "timestamp": "[last_update]",
+            "filter": "[client] IN ('SE','NO') AND [attribute_id] NOT LIKE 'X%'"
+
+            }
+        }
+}
